@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FCKed Editor - the cursed markdown editor</title>
+    <script type="module" src="js/markdown.js" defer></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="wrapper">
+        <nav id="toolbar">
+            <button id="menu"><img src="./icons/menu.svg"/></button>
+            <h1 id="title">FCKed Editor</h1>
+            <div id="right_buttons">
+                <button id="bold"><img src="./icons/bold.svg"/></button>
+                <button id="italic"><img src="./icons/italic.svg"/></button>
+                <button id="heading"><img src="./icons/heading.svg"/></button>
+                <button id="bullet_list"><img src="./icons/bullet-list.svg"/></button>
+                <button id="number_list"><img src="./icons/number-list.svg"/></button>
+                <button id="quote"><img src="./icons/quote.svg"/></button>
+                <button id="code"><img src="./icons/code.svg"/></button>
+                <button id="link"><img src="./icons/link.svg"/></button>
+                <button id="image"><img src="./icons/image.svg"/></button>
+            </div>
+        </nav>
+        <label for="input" style="display: none">Markdown:</label>
+        <textarea id="input" placeholder="Add your markdown here."></textarea>
+        <div id="fcked"></div>
+        <div id="footer">FCKed Editor made with Rust, WASM, and JavaScript by <a href="https://mary.codes">Mary Knize</a>.</div>
+    </div>
+</body>
+</html>
