@@ -7,6 +7,7 @@ This project has two parts, a Rust library (located in `src/rust`) that does all
 Build instructions:
 * Install Rust and Cargo [https://www.rust-lang.org/tools/install](https://www.rust-lang.org/tools/install)
 * Install [http](https://github.com/thecoshman/http/tree/0cd8ea2d74d71a33899de114af8289d78567d015) with `cargo install https`. This is an easy-to-use WASM-capable server.
+* Install [Sass](https://sass-lang.com/install).
 * `npm install`.
 * Build the project with `npm run build-all`. This will compile the Rust code as well as the JavaScript files.
 * Serve the page from the root directory with `npm start`. The compiled files are served from the `docs` directory.
