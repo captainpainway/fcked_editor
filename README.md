@@ -2,6 +2,8 @@
 
 ## The cursed markdown editor
 
+**Demo**: https://captainpainway.github.io/fcked_editor/
+
 This project has two parts, a Rust library (located in `src/rust`) that does all of the markdown processing and returns a mashup of Unicode characters and emojis, and a plain JavaScript editor (located in `src/html`).
 
 Build instructions:
