@@ -1,10 +1,11 @@
 [package]
-name = "markdown_fckr_wasm"
+name = "markdown_fckr"
 version = "0.1.0"
 authors = ["Mary Knize <maryknize@gmail.com>"]
 edition = "2018"
 
 [lib]
+name = "markdown_fckr_wasm"
 path = "src/rust/lib.rs"
 crate-type = ["cdylib"]
 

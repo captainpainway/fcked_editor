@@ -37,7 +37,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-eval("module.exports = __webpack_require__.p + \"c31cd5833bf039edefeb.wasm\";\n\n//# sourceURL=webpack://fcked_editor/./pkg/markdown_fckr_wasm_bg.wasm?");
+eval("module.exports = __webpack_require__.p + \"18e8374c020c79a96a2c.wasm\";\n\n//# sourceURL=webpack://fcked_editor/./pkg/markdown_fckr_wasm_bg.wasm?");
 
 /***/ }),
 
