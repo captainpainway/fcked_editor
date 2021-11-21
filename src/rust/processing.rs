@@ -4,20 +4,8 @@ mod emojifck;
 use regex::Regex;
 use font_fckin::*;
 use emojifck::*;
-use wasm_bindgen::prelude::*;
 
-#[wasm_bindgen]
-extern {
-    #[wasm_bindgen(js_namespace = console)]
-    pub fn log(s: &str);
-}
-
-#[wasm_bindgen]
-pub fn process(markdown: &str) -> String {
-    process_markdown(markdown.to_owned())
-}
-
-fn process_markdown(markdown: String) -> String {
+pub fn process_markdown(markdown: String) -> String {
     let html = process_text(markdown.to_string());
     println!("{}", html);
     html
@@ -27,10 +15,10 @@ fn process_text(contents: String) -> String {
     let mut text = process_headers(contents);
     text = process_blockquotes(text);
     text = process_code_block(text);
-    text = process_link(text);
     text = process_unordered_list(text);
     text = process_ordered_list(text);
     text = process_image(text);
+    text = process_link(text);
     text = process_bold_italic(text);
     text = process_hashtags(text);
     text = process_code(text);
@@ -71,10 +59,10 @@ fn process_blockquotes(contents: String) -> String {
     for line in contents.lines() {
         if re.is_match(line) {
             for cap in re.captures(line) {
-                  vec.push("<blockquote>".to_owned() +
-                      &blockquote_fck(cap.get(2).map_or("".to_string(), |m| m.as_str().to_string())) +
-                      "</blockquote>"
-                  );
+                vec.push("<blockquote>".to_owned() +
+                    &blockquote_fck(cap.get(2).map_or("".to_string(), |m| m.as_str().to_string())) +
+                    "</blockquote>"
+                );
             }
         } else {
             vec.push(line.to_owned());
@@ -237,11 +225,11 @@ fn process_code(contents: String) -> String {
 
 fn process_image(contents: String) -> String {
     let mut vec: Vec<String> = Vec::new();
-    let re = Regex::new(r"(.+)(!\[)(.*)(\])(\()(https?://.+)(\))(.+)").unwrap();
+    let re = Regex::new(r"(.*)(!\[)(.*)(])(\()(https?://.+)(\))(.*)").unwrap();
     for line in contents.lines() {
         if re.is_match(line) {
             for cap in re.captures_iter(line) {
-                vec.push(cap[1].to_owned() + "<img src=\"" + &cap[6] + "\" alt=\"" + &cap[3] + "\">" + &cap[8]);
+                vec.push(cap[1].to_owned() + "<img src=\"" + &cap[6] + "\" alt=\"" + &cap[3] + "\" title=\"" + &cap[3] + "\">" + &cap[8]);
             }
         } else {
             vec.push(line.to_owned());
@@ -252,7 +240,7 @@ fn process_image(contents: String) -> String {
 
 fn process_link(contents: String) -> String {
     let mut vec: Vec<String> = Vec::new();
-    let re = Regex::new(r"(.*)(\[)(.+)(\])(\()(https?://.+)(\))(.*)").unwrap();
+    let re = Regex::new(r"(.*)(\[)(.+)(\])(\()(https?://.+|mailto:.+|tel:.+)(\))(.*)").unwrap();
     for line in contents.lines() {
         if re.is_match(line) {
             for cap in re.captures_iter(line) {

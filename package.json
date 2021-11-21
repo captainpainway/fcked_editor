@@ -1,0 +1,23 @@
+{
+  "name": "fcked_editor",
+  "version": "1.0.0",
+  "description": "A cursed markdown editor in Rust and JS.",
+  "private": true,
+  "scripts": {
+    "build-all": "npm run wasm && webpack && npm run sass && cp src/html/index.html docs/index.html && cp -r src/html/icons docs/icons",
+    "build": "webpack && npm run sass && cp src/html/index.html docs/index.html && cp -r src/html/icons docs/icons",
+    "wasm": "wasm-pack build --target web",
+    "start": "http docs",
+    "sass": "sass src/html/scss/style.scss docs/css/style.css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mary Knize <maryknize@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "file-saver": "^2.0.5"
+  },
+  "devDependencies": {
+    "webpack": "^5.46.0",
+    "webpack-cli": "^4.7.2"
+  }
+}

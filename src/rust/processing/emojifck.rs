@@ -13,7 +13,7 @@ struct Emoji {
 }
 
 pub fn emojifck(line: &str) -> String {
-    let contents = include_str!("./emojis.json");
+    let contents = include_str!("emojis.json");
     let mut new_line = line.to_owned();
     let mut matching_keywords = Vec::new();
     let emojis: Vec<Emoji> = serde_json::from_str(contents).unwrap();

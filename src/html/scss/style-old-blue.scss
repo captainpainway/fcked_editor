@@ -1,0 +1,211 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
+:root {
+  --color-test: rgb(20, 212, 255);
+  --base-color: 20, 212, 255;
+  --main-color: rgb(var(--base-color));
+  --main-7: rgba(var(--base-color), 0.07);
+  --main-30: rgba(var(--base-color), 0.3);
+  --main-50: rgba(var(--base-color), 0.5);
+  --main-70: rgba(var(--base-color), 0.7);
+  --main-90: rgba(var(--base-color), 0.9);
+  --light-main: rgb(235, 251, 255);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 12pt;
+  background-color: var(--light-main);
+}
+
+#wrapper {
+  width: 1200px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /*grid-column-gap: 1em;*/
+  grid-row-gap: 1em;
+  margin: 3em auto 0 auto;
+  text-align: left;
+  background-color: white;
+  filter: drop-shadow(0 0.6em 1em var(--main-30));
+  /*border: 2px solid #333;*/
+  border-radius: 18px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+#input, #preview {
+  box-sizing: border-box;
+  height: 75vh;
+  padding: 0.5em 1em;
+  overflow-y: auto;
+  margin: 0 1em;
+  background-color: white;
+}
+
+#input {
+  padding: 1em;
+  border: 0;
+  margin-right: 0;
+  resize: none;
+}
+
+#preview h1,
+#preview h2,
+#preview h3,
+#preview h4,
+#preview h5,
+#preview h6,
+#preview b,
+#preview i {
+  font-weight: normal;
+  font-style: normal;
+}
+
+#preview {
+  img {
+    width: 100%;
+    height: auto;
+    filter: contrast(275%) invert(100%) hue-rotate(70deg);
+  }
+}
+
+#toolbar {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  height: 60px;
+  background-color: white;
+  box-shadow: 0 0.4em 1em var(--main-30);
+  box-sizing: border-box;
+  padding: 0.7em 1.4em;
+  z-index: 100;
+
+  button {
+    width: 40px;
+    height: 40px;
+    box-sizing: border-box;
+    padding: 0.4em;
+    border: 0;
+    display: inline-flex;
+    cursor: pointer;
+    margin-right: 1.5em;
+    border-radius: 12px;
+    background-color: transparent;
+    transition: box-shadow 300ms ease;
+
+    img {
+      pointer-events: none;
+      width: 100%;
+      height: 100%;
+      filter: brightness(0) saturate(100%) invert(30%);
+      display: inline;
+    }
+
+    &#menu_btn {
+      margin-right: 1em;
+    }
+
+    &:hover {
+      background-color: var(--main-7);
+      box-shadow: inset 0 -0.2em 0.8em var(--main-50);
+    }
+
+    &:active {
+      filter: drop-shadow(0 0 0.2em var(--main-50));
+      background-color: var(--main-7);
+      box-shadow: inset 0 0.2em 0.8em var(--main-50);
+    }
+  }
+}
+
+#title {
+  display: inline-flex;
+  margin: 0;
+  vertical-align: top;
+  padding-top: 0.2em;
+  font-size: 1.6em;
+  font-weight: normal;
+  color: #333333;
+}
+
+#right_buttons {
+  float: right;
+  display: inline-flex;
+}
+
+#footer {
+  text-align: center;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  padding-bottom: 0.5em;
+  font-size: 12px;
+}
+
+#menu {
+  position: absolute;
+  top: 60px;
+  left: -320px;
+  width: 300px;
+  height: 85vh;
+  transition: transform 300ms ease;
+  background-color: var(--light-main);
+  box-shadow: 0 0.4em 1em var(--main-30);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: 40px;
+  grid-row-gap: 1em;
+  box-sizing: border-box;
+  padding: 2em 1em;
+
+  &[data-open=false] {
+    transform: translateX(0);
+  }
+
+  &[data-open=true] {
+    transform: translateX(320px);
+  }
+
+  button {
+    border: 0;
+    border-radius: 12px;
+    font-family: "Ubuntu", sans-serif;
+    font-size: 1.2em;
+    /*color: #14d2ff;*/
+    color: #333333;
+    cursor: pointer;
+    font-weight: bold;
+    font-variant: all-small-caps;
+    background-color: transparent;
+    transition: all 300ms ease;
+
+    &:hover {
+      filter: drop-shadow(0 0 0.2em var(--main-90));
+      /*box-shadow: inset 0 -0.2em 0.8em rgba(20, 212, 255, 0.4);*/
+    }
+
+    &:active {
+      /*filter: drop-shadow(0 0 0.2em rgba(20, 212, 255, 0.5));*/
+      /*box-shadow: inset 0 0.2em 0.8em rgba(20, 212, 255, 0.4);*/
+      color: var(--main-color);
+    }
+  }
+}
+
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+  #menu {
+    background-color: var(--main-7);
+    backdrop-filter: blur(5px);
+  }
+}
+
+#menu_background {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/*# sourceMappingURL=style.scss.map */

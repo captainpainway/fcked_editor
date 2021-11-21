@@ -5,7 +5,12 @@ authors = ["Mary Knize <maryknize@gmail.com>"]
 edition = "2018"
 
 [lib]
+path = "src/rust/lib.rs"
 crate-type = ["cdylib"]
+
+[[bin]]
+name = "markdown_fckr"
+path = "src/rust/main.rs"
 
 [profile.release]
 lto = true
